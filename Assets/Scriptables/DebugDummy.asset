@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39b30484b4ba884a99d842306056996, type: 3}
+  m_Name: DebugDummy
+  m_EditorClassIdentifier: 
+  name: Dummy
+  description: Dummy Debug Limb for Debug times
+  HP: 10
+  DMG: 2
+  prefab: {fileID: 1707166363290202, guid: 9b38be1b904657341a2a09c7c574624f, type: 2}
+  cooldown: 0
