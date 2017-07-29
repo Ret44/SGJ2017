@@ -10,6 +10,7 @@ public class LegBehaviour : MonoBehaviour {
     public void Awake()
     {
         rootTransform = GetComponent<Transform>();
+        animator.Play(0, -1, Random.value);
     }
     public void SetLegAnimationSpeed(float val)
     {

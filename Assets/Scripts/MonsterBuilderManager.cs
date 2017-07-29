@@ -46,7 +46,8 @@ public class MonsterBuilderManager : MonoBehaviour {
         else if (id >= cards.Count)
             id = 0;
 
-        cards[selectedCard].Deselect();
+        if(selectedCard<cards.Count)
+            cards[selectedCard].Deselect();
         selectedCard = id;
         cards[selectedCard].Select(currentSelector);
     }
