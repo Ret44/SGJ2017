@@ -23,7 +23,9 @@ public class PlayerControls : MonoBehaviour {
         else if (inputActions.Move.X > 0)
             dir = 1;
 
-        baseComponent.SetLegsAnimationSpeed(movementVector.magnitude * 10, dir);
+        if (dir != 0)
+            baseComponent.baseSprite.localScale = new Vector3(dir,1,1);
+         baseComponent.SetLegsAnimationSpeed(movementVector.magnitude * 10);
         //}
     }
 

@@ -11,11 +11,11 @@ public class LegBehaviour : MonoBehaviour {
     {
         rootTransform = GetComponent<Transform>();
     }
-    public void SetLegAnimationSpeed(float val, int direction)
+    public void SetLegAnimationSpeed(float val)
     {
         animator.speed = Mathf.Clamp(val, 0.0f, 1.0f);
-        if (direction != 0) 
-            rootTransform.localScale = new Vector3(direction, 1, 1);
+        //if (direction != 0) 
+        //    rootTransform.localScale = new Vector3(direction, 1, 1);
     }
   
 }

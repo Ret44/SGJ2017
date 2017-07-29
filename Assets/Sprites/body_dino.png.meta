@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: db43ea1003051944592ac33ae296bd25
-timeCreated: 1501339454
+guid: a516f0de2699b164dbd1bd8d34f2880c
+timeCreated: 1501340916
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: skeleton_0
-    21300002: skeleton_1
-    21300004: skeleton_2
+    21300000: body_dino_0
+    21300002: body_dino_1
+    21300004: body_dino_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -86,27 +86,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: skeleton_0
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 130
-        width: 340
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: skeleton_1
+      name: body_dino_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 125
-        height: 124
+        y: 121
+        width: 185
+        height: 127
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,13 +100,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: skeleton_2
+      name: body_dino_1
       rect:
         serializedVersion: 2
-        x: 157
-        y: 16
-        width: 85
-        height: 65
+        x: 213
+        y: 15
+        width: 317
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: body_dino_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 185
+        height: 110
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

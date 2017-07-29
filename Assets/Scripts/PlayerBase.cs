@@ -68,11 +68,11 @@ public class PlayerBase : MonoBehaviour {
             Debug.LogWarning("No free joints! :(");
     }
 
-    public void SetLegsAnimationSpeed(float val, int direction)
+    public void SetLegsAnimationSpeed(float val)
     {
         for(int i=0;i<legs.Length;i++)
         {
-            legs[i].SetLegAnimationSpeed(val, direction);
+            legs[i].SetLegAnimationSpeed(val);
         }
     }
 	// Use this for initialization
