@@ -6,16 +6,24 @@ using InControl;
 [RequireComponent(typeof(PlayerBase))]
 public class PlayerControls : MonoBehaviour {
 
+    public int deviceId;
     public PlayerActions inputActions;
     private PlayerBase baseComponent;
     private Transform baseTransform;
-
+    
     void MovementUpdate()
     {
         //if(device.LeftStick.Value)
         //{
-      
-        baseTransform.Translate(new Vector3(inputActions.Move.X * GameRules.movementSpeed * Time.deltaTime, inputActions.Move.Y * GameRules.movementSpeed * Time.deltaTime, 0f));
+        Vector3 movementVector = new Vector3(inputActions.Move.X * GameRules.movementSpeed * Time.deltaTime, inputActions.Move.Y * GameRules.movementSpeed * Time.deltaTime, 0f);
+        baseTransform.Translate(movementVector);
+        int dir = 0;
+        if (inputActions.Move.X < 0)
+            dir = -1;
+        else if (inputActions.Move.X > 0)
+            dir = 1;
+
+        baseComponent.SetLegsAnimationSpeed(movementVector.magnitude * 10, dir);
         //}
     }
 
@@ -58,6 +66,17 @@ public class PlayerControls : MonoBehaviour {
         inputActions.Action2.AddDefaultBinding(Key.S);
         inputActions.Action3.AddDefaultBinding(Key.D);
         inputActions.Action4.AddDefaultBinding(Key.F);
+        
+        inputActions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
+        inputActions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
+        inputActions.Up.AddDefaultBinding(InputControlType.LeftStickUp);
+        inputActions.Down.AddDefaultBinding(InputControlType.LeftStickDown);
+        inputActions.Action1.AddDefaultBinding(InputControlType.Action1);
+        inputActions.Action2.AddDefaultBinding(InputControlType.Action3);
+        inputActions.Action3.AddDefaultBinding(InputControlType.Action4);
+        inputActions.Action4.AddDefaultBinding(InputControlType.Action2);
+
+        inputActions.Device = InputManager.Devices[deviceId];
     }
 
 	// Use this for initialization

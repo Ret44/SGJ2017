@@ -11,7 +11,23 @@ public class LimbBehaviour : MonoBehaviour {
     public Collider[] colliders;
     public bool isStriking;
 
+    [HideInInspector]
+    public LimbAnimator limbAnimator = null;
+
     public Transform spriteRootTransform;
+    public SpriteRenderer[] sprites;
+
+
+    public void EnableStriking()
+    {
+        isStriking = true;
+    }
+
+    public void DisableStriking()
+    {
+        isStriking = false;
+    }
+
 
     public void OnTriggerEnter(Collider collision)
     {
@@ -21,9 +37,7 @@ public class LimbBehaviour : MonoBehaviour {
             if (other.isStriking)
             {
                 other.isStriking = false;
-                HP -= other.definition.DMG;
-                if (HP <= 0)
-                    Die();
+                OnHit(other.definition.DMG);
             }
         }
     }
@@ -57,24 +71,45 @@ public class LimbBehaviour : MonoBehaviour {
         }
     }
 
+
+    public void OnHit(float DMG)
+    {
+        HP -= DMG;
+        if (HP < 0)
+            Die();
+        else
+        {
+            for(int i=0;i<sprites.Length;i++)
+            {
+                sprites[i].color = Color.red;
+                sprites[i].DOColor(Color.white, 0.15f);
+            }
+        }
+    }
     public void Die()
     {
         ParticleManager.SpawnParticles(Particles.BloodSplat, spriteRootTransform.position);
         Destroy(this.gameObject);
     }
+
     public virtual void Animate()
     {
-        isStriking = true;
-        spriteRootTransform.DOScale(new Vector3(1.75f, 0.65f, 0f), 0.15f)
-            .OnComplete(() =>
-            {
-                spriteRootTransform.DOScale(new Vector3(0.5f, 2f, 0f), 0.25f)
-                    .OnComplete(() =>
-                    { 
-                        spriteRootTransform.DOScale(Vector3.one, 0.25f);
-                        isStriking = false;
-                    });                
-            });
+        if (limbAnimator != null)
+            limbAnimator.Animate();
+        else
+        {
+            isStriking = true;
+            spriteRootTransform.DOScale(new Vector3(1.75f, 0.65f, 0f), 0.15f)
+                .OnComplete(() =>
+                {
+                    spriteRootTransform.DOScale(new Vector3(0.5f, 2f, 0f), 0.25f)
+                        .OnComplete(() =>
+                        {
+                            spriteRootTransform.DOScale(Vector3.one, 0.25f);
+                            isStriking = false;
+                        });
+                });
+        }
     }
 
     public virtual void Action() { }

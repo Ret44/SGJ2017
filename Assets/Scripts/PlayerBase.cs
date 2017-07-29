@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum Player
 {
     One = 8,
     Two = 9
 }
 public class PlayerBase : MonoBehaviour {
+
+    [SerializeField]
+    public LegBehaviour[] legs;
+    
+    [SerializeField]
+    public Transform baseSprite;
 
     [SerializeField]
     private List<Transform> joints;
@@ -50,18 +57,28 @@ public class PlayerBase : MonoBehaviour {
             limb.transform.parent = jointTransform;
             limb.transform.localEulerAngles = Vector3.zero;
             _limbs[jointId] = limb.GetComponent<LimbBehaviour>();
-            limb.layer = LayerMask.NameToLayer("Player1");
-            _limbs[jointId].SetCollidersLayer(LayerMask.NameToLayer("Player1"));
+            limb.layer = LayerMask.NameToLayer(player == Player.One ? "Player1" : "Player2");
+            _limbs[jointId].SetCollidersLayer(LayerMask.NameToLayer(player == Player.One ? "Player1" : "Player2"));
+            if (jointTransform.localEulerAngles.z > 180)
+                limb.transform.localScale = new Vector3(-1, 1, 1);
+            else
+                limb.transform.localScale = Vector3.one;
         }
         else
             Debug.LogWarning("No free joints! :(");
     }
 
-
+    public void SetLegsAnimationSpeed(float val, int direction)
+    {
+        for(int i=0;i<legs.Length;i++)
+        {
+            legs[i].SetLegAnimationSpeed(val, direction);
+        }
+    }
 	// Use this for initialization
 	void Start () {
-
-	}
+   
+    }
 	
 	// Update is called once per frame
 	void Update () {
