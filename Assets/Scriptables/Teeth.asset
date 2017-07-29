@@ -17,3 +17,5 @@ MonoBehaviour:
   DMG: 10
   prefab: {fileID: 1685293699723090, guid: 195c2829186cf4b4baab82c3c12af7c3, type: 2}
   cooldown: 0
+  cardIcon: {fileID: 21300000, guid: a896f46f5ccfa414f90aaeaf2b784d5b, type: 3}
+  cardContent: {fileID: 21300000, guid: f4f566561e477c6469630d6066bc5c16, type: 3}

@@ -12,4 +12,6 @@ public class LimbDefinition : ScriptableObject {
     public GameObject prefab;
     [Range(0.0f, 15.0f)]
     public float cooldown;
+    public Sprite cardIcon;
+    public Sprite cardContent;
 }

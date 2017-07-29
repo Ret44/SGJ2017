@@ -11,13 +11,32 @@ public enum Player
 public class PlayerBase : MonoBehaviour {
 
     [SerializeField]
-    public LegBehaviour[] legs;
-    
-    [SerializeField]
-    public Transform baseSprite;
+    public LegBehaviour[] legs
+    {
+        get { return body.legs;}
+    }
 
     [SerializeField]
-    private List<Transform> joints;
+    private List<Transform> joints
+    {
+        get { return body.joints;}
+    }
+
+    [SerializeField]
+    private List<Transform> leftLegsJoints
+    {
+        get { return body.leftLegsJoints; }
+    }
+
+    [SerializeField]
+    private List<Transform> rightLegsJoints
+    {
+        get { return body.rightLegsJoints; }
+    }
+
+
+    [SerializeField]
+    public Transform baseSprite;
 
     public Player player;
     public LimbBehaviour[] limbs
@@ -26,6 +45,8 @@ public class PlayerBase : MonoBehaviour {
     }
     [SerializeField]
     private LimbBehaviour[] _limbs;
+
+    public BodyBehaviour body;
     
     private int GetFreeJointID()
     {
@@ -77,7 +98,9 @@ public class PlayerBase : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
-   
+        GameObject bodyObj = Instantiate(LimbManager.bodyPrefabs[Random.Range(0, LimbManager.bodyPrefabs.Count)]);
+        bodyObj.GetComponent<BodyBehaviour>().RegisterTo(this);
+        bodyObj.transform.localPosition = Vector3.zero;
     }
 	
 	// Update is called once per frame

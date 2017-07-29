@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/monsterBuilder.unity
+    guid: e8f85e61f62fcf74daaa27d516dd5d67
+  - enabled: 1
+    path: Assets/Scenes/battlescene.unity
+    guid: ed7ccaec9a3002549a676e13ef37e940
