@@ -14,8 +14,18 @@ public class PlayerControls : MonoBehaviour {
     void MovementUpdate()
     {
         //if(device.LeftStick.Value)
-        //{
+        //
         Vector3 movementVector = new Vector3(inputActions.Move.X * GameRules.movementSpeed * Time.deltaTime, inputActions.Move.Y * GameRules.movementSpeed * Time.deltaTime, 0f);
+        //if (movementVector.y > 2.35f)
+        //    movementVector.y = 2.35f;
+        //if (movementVector.y < -6.0f)
+        //    movementVector.y = -6.0f;
+
+        //if (movementVector.x > 9.5f)
+        //    movementVector.x = 9.5f;
+        //if (movementVector.x < 8.3f)
+        //    movementVector.x = 8.3f;
+
         baseTransform.Translate(movementVector);
         int dir = 0;
         if (inputActions.Move.X < 0)
@@ -24,7 +34,8 @@ public class PlayerControls : MonoBehaviour {
             dir = 1;
 
         if (dir != 0)
-            baseComponent.baseSprite.localScale = new Vector3(dir,1,1);
+            baseComponent.body.transform.localScale = new Vector3(dir,1,1);
+
          baseComponent.SetLegsAnimationSpeed(movementVector.magnitude * 10);
         //}
     }

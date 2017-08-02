@@ -25,12 +25,15 @@ public class BodyBehaviour : MonoBehaviour {
 
         int legsPairCount = leftLegsJoints.Count;
         int randomLegId = Random.Range(0, LimbManager.leftLegPrefabs.Count);
+        int legsIt = 0;
         for(int i=0;i<legsPairCount;i++)
         {
             GameObject newObj = Instantiate(LimbManager.leftLegPrefabs[randomLegId], leftLegsJoints[i]);
             newObj.transform.localPosition = Vector3.zero;
+            legs[legsIt++] = newObj.GetComponent<LegBehaviour>();
             newObj = Instantiate(LimbManager.rightLegPrefabs[randomLegId], rightLegsJoints[i]);
             newObj.transform.localPosition = Vector3.zero;
+            legs[legsIt++] = newObj.GetComponent<LegBehaviour>();
         }
     }
 }

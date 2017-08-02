@@ -14,4 +14,21 @@ public class LimbDefinition : ScriptableObject {
     public float cooldown;
     public Sprite cardIcon;
     public Sprite cardContent;
+
+    public string[] prefixNames;
+    public string[] midNames;
+    public string[] suffixNames;
+
+    public string GetPrefix()
+    {
+        return prefixNames[Random.Range(0, prefixNames.Length - 1)];
+    }
+    public string GetMid()
+    {
+        return midNames[Random.Range(0, midNames.Length - 1)];
+    }
+    public string GetSuffix()
+    {
+        return suffixNames[Random.Range(0, suffixNames.Length - 1)];
+    }
 }

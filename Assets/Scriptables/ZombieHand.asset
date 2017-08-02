@@ -13,9 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: ZombieHand
   description: 
-  HP: 40
+  HP: 2
   DMG: 1
   prefab: {fileID: 1283270411098856, guid: a87b55ff3d569cc4fb5bf2c05cc9d857, type: 2}
   cooldown: 0
   cardIcon: {fileID: 21300000, guid: 432f5ffd32cce3b49b16e94399faff48, type: 3}
   cardContent: {fileID: 21300000, guid: 1b3ea9fa4b424b34dac2f5374c112d5a, type: 3}
+  prefixNames:
+  - Graspy
+  - Handy
+  - Pulling
+  - Once-human
+  midNames:
+  - Hand
+  - Arm
+  - Palm
+  - Grip
+  suffixNames:
+  - of the Grasp
+  - made of Flesh
+  - from the Grave

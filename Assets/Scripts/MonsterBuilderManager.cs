@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using InControl;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class MonsterBuilderManager : MonoBehaviour {
 
@@ -18,6 +20,9 @@ public class MonsterBuilderManager : MonoBehaviour {
     public List<LimbDefinition> player1Limbs;
     public List<LimbDefinition> player2Limbs;
 
+    public RectTransform topRoot;
+    public RectTransform bottomRoot;
+
     public int selectedCard;
 
     void GetNewCards()
@@ -30,6 +35,7 @@ public class MonsterBuilderManager : MonoBehaviour {
             uiCard.SetDefinition(newDef);
             cards.Add(uiCard);
         }
+        SelectCard(0);
     }
 
 
@@ -68,7 +74,29 @@ public class MonsterBuilderManager : MonoBehaviour {
             currentSelector = (currentSelector == Player.One ? Player.Two : Player.One);
             SelectCard(0);
         }
+        else
+        {
+            GoToNextScreen();
+        }
     }
+
+    public void GoToNextScreen()
+    {
+        topRoot.DOAnchorPos(new Vector2(0, 600f), 1f).SetEase(Ease.InOutBack);
+        bottomRoot.DOAnchorPos(new Vector2(0, -600f), 1f).SetEase(Ease.InOutBack);
+        player1Base.transform.parent = null;
+        player2Base.transform.parent = null;
+        player1Base.transform.DOMove(new Vector3(-4, 0, player1Base.transform.position.z), 2f);
+        player2Base.transform.DOMove(new Vector3(4, 0, player1Base.transform.position.z), 2f);
+        player1Base.transform.DOScale(new Vector3(0.75f,0.75f, 1f),2f);
+        player2Base.transform.DOScale(new Vector3(0.75f,0.75f, 1f),2f);
+        GameUI.player1Name.text = player1Base.name;
+        GameUI.player2Name.text = player2Base.name;
+        GameUI.ShowGameHUD();
+        SceneManager.LoadScene("battlescene", LoadSceneMode.Additive);
+        this.enabled = false;
+    }
+
 	// Update is called once per frame
 	void Update () {
         int devId = (currentSelector == Player.One?0:1);

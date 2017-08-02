@@ -214,10 +214,10 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127759435762726}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4800004, y: 0.77000016, z: 0.2}
+  m_Size: {x: 1.4800004, y: 0.77000016, z: 100}
   m_Center: {x: -0.000000059604645, y: -0.00000011920929, z: 0}
 --- !u!65 &65916739288808542
 BoxCollider:
@@ -226,10 +226,10 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811100005509770}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4300003, y: 0.76000017, z: 0.2}
+  m_Size: {x: 1.4300003, y: 0.76000017, z: 1000}
   m_Center: {x: -0.000000029802322, y: -0.00000011920929, z: 0}
 --- !u!114 &114427096008750484
 MonoBehaviour:
@@ -301,7 +301,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: ab6ad3dc0c450e74cac3ae0ccc3e9c36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -385,7 +385,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300002, guid: ab6ad3dc0c450e74cac3ae0ccc3e9c36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

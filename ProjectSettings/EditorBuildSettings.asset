@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/gameMenu.unity
+    guid: 9145d98336d0b4130beb886e055610ad
+  - enabled: 1
+    path: Assets/Scenes/gameUI.unity
+    guid: 3d1d6ce4c4a034b429c9029c6dcf7877
+  - enabled: 1
     path: Assets/Scenes/monsterBuilder.unity
     guid: e8f85e61f62fcf74daaa27d516dd5d67
   - enabled: 1
     path: Assets/Scenes/battlescene.unity
     guid: ed7ccaec9a3002549a676e13ef37e940
+  - enabled: 1
+    path: Assets/Scenes/gameEnd.unity
+    guid: 8e4205d995ca34010bf4a0d8f7fb0fdf

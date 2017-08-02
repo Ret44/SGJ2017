@@ -16,21 +16,28 @@ public class LimbSwing : LimbAnimator {
 
     [Range(0f, 1f)]
     public float returnTime;
+    public bool isAttacking;
 
     public override void Animate()
     {
-        limbBehaviour.isStriking = true;
-        limbBehaviour.spriteRootTransform.DOLocalRotate(new Vector3(0f,0f,swingRange),buildUpTime)
-            .OnComplete(() =>
-                {
-                    limbBehaviour.isStriking = true;
-                    limbBehaviour.spriteRootTransform.DOLocalRotate(new Vector3(0f, 0f, swingRange * -1), strikeTime)
-                        .OnComplete(() =>
-                        {
-                            limbBehaviour.isStriking = false;
-                            limbBehaviour.spriteRootTransform.DOLocalRotate(Vector3.zero, returnTime);
-                        });
-                });
+        if (!isAttacking)
+        {
+            isAttacking = true;
+            limbBehaviour.isStriking = true;
+            limbBehaviour.spriteRootTransform.DOLocalRotate(new Vector3(0f, 0f, swingRange), buildUpTime)
+                .OnComplete(() =>
+                    {
 
+                        limbBehaviour.spriteRootTransform.DOLocalRotate(new Vector3(0f, 0f, swingRange * -1), strikeTime)
+                            .OnComplete(() =>
+                            {
+                                limbBehaviour.spriteRootTransform.DOLocalRotate(Vector3.zero, returnTime).OnComplete(() =>
+                                {
+                                    isAttacking = false;
+                                    limbBehaviour.isStriking = false;
+                                });
+                            });
+                    });
+        }
     }
 }

@@ -10,6 +10,8 @@ public class LimbBehaviour : MonoBehaviour {
     private Transform objTransform;
     public Collider[] colliders;
     public bool isStriking;
+    public bool isDefended;
+
 
     [HideInInspector]
     public LimbAnimator limbAnimator = null;
@@ -28,14 +30,21 @@ public class LimbBehaviour : MonoBehaviour {
         isStriking = false;
     }
 
-
+    public void DisableDefense()
+    {
+        isDefended = false;
+    }
     public void OnTriggerEnter(Collider collision)
     {
+        
         LimbBehaviour other = collision.attachedRigidbody.GetComponent<LimbBehaviour>();
         if (other != null)
         {
-            if (other.isStriking)
+            Debug.Log(other.definition.name + "  koliduje z " + definition.name);
+            if (!isDefended && other.isStriking)
             {
+                isDefended = true;
+                Invoke("DisableDefense", 1f);
                 other.isStriking = false;
                 OnHit(other.definition.DMG);
             }
@@ -79,10 +88,12 @@ public class LimbBehaviour : MonoBehaviour {
             Die();
         else
         {
+            SoundManager.PlayChop();
+            ParticleManager.SpawnParticles(Particles.Stars, new Vector3(spriteRootTransform.position.x, spriteRootTransform.position.y, 0f));
             for(int i=0;i<sprites.Length;i++)
             {
                 sprites[i].color = Color.red;
-                sprites[i].DOColor(Color.white, 0.15f);
+                sprites[i].DOColor(Color.white, 1f).SetEase(Ease.InExpo);
             }
         }
     }
@@ -96,8 +107,9 @@ public class LimbBehaviour : MonoBehaviour {
     {
         if (limbAnimator != null)
             limbAnimator.Animate();
-        else
+        else if(!isStriking)
         {
+            SoundManager.PlayPunch();
             isStriking = true;
             spriteRootTransform.DOScale(new Vector3(1.75f, 0.65f, 0f), 0.15f)
                 .OnComplete(() =>

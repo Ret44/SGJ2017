@@ -13,9 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: FlyHead
   description: 
-  HP: 50
+  HP: 2
   DMG: 2
   prefab: {fileID: 1320838245399080, guid: 8817dde538625d6418c60bb772d5055c, type: 2}
   cooldown: 0
   cardIcon: {fileID: 21300000, guid: a06a31e0459da434cb1612185ea6e152, type: 3}
   cardContent: {fileID: 21300000, guid: ee2ede4c376f7844cbe25f319ee51738, type: 3}
+  prefixNames:
+  - 'Buzzing '
+  - Flying
+  - Annoying
+  - Poo-eating
+  midNames:
+  - Fly
+  - Insect
+  - Tse-tse
+  - Vermin
+  suffixNames:
+  - that buzz
+  - with big eyes
+  - 'that stings '

@@ -13,9 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tentacle
   description: 
-  HP: 25
+  HP: 2
   DMG: 2
   prefab: {fileID: 1875413608018442, guid: 2be8e2f2008a64b418891fb315e309dd, type: 2}
   cooldown: 0
   cardIcon: {fileID: 21300000, guid: 92cf337a658ac814fbbc4499c8c49a92, type: 3}
   cardContent: {fileID: 21300000, guid: 85ec7817cced09e488805038d564d269, type: 3}
+  prefixNames:
+  - Squidy
+  - Calmary
+  - Nautical
+  - Slippery
+  midNames:
+  - Tentacle
+  - Squid
+  - Octopus
+  - Sea monster
+  suffixNames:
+  - of the abyss
+  - from the depth
+  - out of sea
